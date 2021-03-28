@@ -36,4 +36,13 @@ public class LoginPage {
     public void getEnter(String enter){
      Driver.get().findElement(By.xpath("//button[contains(text(),'"+enter+"')]")).click();
     }
+ public String passwordError(String text) {
+  try {
+   String errorMessage = Driver.get().findElement(By.xpath("//div[contains(text(),'" + text + "')]")).getText();
+   return errorMessage;
+  } catch (Exception e) {
+   String currentUrl = Driver.get().getCurrentUrl();
+   return currentUrl;
+  }
+ }
 }
